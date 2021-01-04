@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://artwork/spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://pawns/ArrowInput.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "DOWN"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 32, 0, 16, 16 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "LEFT"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 48, 0, 16, 16 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "RIGHT"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 16, 0, 16, 16 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "UP"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 16, 16 ) ]
+}
+
+[node name="Arrow_Up" type="Sprite"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+region_filter_clip = true
+script = ExtResource( 2 )
+dir = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DOWN = SubResource( 1 )
+anims/LEFT = SubResource( 2 )
+anims/RIGHT = SubResource( 3 )
+anims/UP = SubResource( 4 )
