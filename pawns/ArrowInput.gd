@@ -2,32 +2,35 @@ extends Sprite
 
 onready var animPlayer = $AnimationPlayer
 
-const direction = preload("../Globals/Direction.gd")
+const direction = preload("../Globals/Direction.gd").direction
 
-export(direction.direction) var dir := direction.direction.UP
+export(direction) var dir := direction.UP
 
 signal inputDetected(direction)
 
 func _ready():
-	if dir == direction.direction.UP:
+	if dir == direction.UP:
 		offset = Vector2(0,-16)
 		animPlayer.play("UP")
-	elif dir == direction.direction.DOWN:
+	elif dir == direction.DOWN:
 		offset = Vector2(0,16)
 		animPlayer.play("DOWN")
-	elif dir == direction.direction.LEFT:
+	elif dir == direction.LEFT:
 		offset = Vector2(-16,0)
 		animPlayer.play("LEFT")
-	elif dir == direction.direction.RIGHT:
+	elif dir == direction.RIGHT:
 		offset = Vector2(16,0)
 		animPlayer.play("RIGHT")
 
 func _input(event):
-	if dir == direction.direction.UP && event.is_action_pressed("ui_up"):
-		emit_signal("inputDetected",dir)
-	elif dir == direction.direction.DOWN && event.is_action_pressed("ui_down"):
-		emit_signal("inputDetected",dir)
-	elif dir == direction.direction.LEFT && event.is_action_pressed("ui_left"):
-		emit_signal("inputDetected",dir)
-	elif dir == direction.direction.RIGHT && event.is_action_pressed("ui_right"):
-		emit_signal("inputDetected",dir)
+	if visible \
+		and ((dir == direction.UP and event.is_action_pressed("ui_up")) \
+		or (dir == direction.DOWN and event.is_action_pressed("ui_down")) \
+		or (dir == direction.LEFT and event.is_action_pressed("ui_left")) \
+		or (dir == direction.RIGHT and event.is_action_pressed("ui_right"))) :
+			sendInput(dir)
+
+
+func sendInput(dir):
+	print_debug("Input detected for: " + direction.keys()[dir])
+	emit_signal("inputDetected",dir)

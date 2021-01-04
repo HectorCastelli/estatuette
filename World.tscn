@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://artwork/spritesheet.png" type="Texture" id=1]
-[ext_resource path="res://pawns/Pawn.gd" type="Script" id=2]
-[ext_resource path="res://pawns/Arrows.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pawns/Pawn.tscn" type="PackedScene" id=2]
 
 [sub_resource type="TileSet" id=1]
 0/name = "spritesheet.png 0"
@@ -48,98 +47,6 @@
 2/shapes = [  ]
 2/z_index = 0
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 9.0
-
-[sub_resource type="Animation" id=3]
-length = 0.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 16, 32, 16, 16 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 48, 32, 16, 16 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-length = 0.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 32, 32, 16, 16 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 0.1
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 32, 16, 16 ) ]
-}
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Left"
-
-[sub_resource type="AnimationNodeAnimation" id=8]
-animation = "Right"
-
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "Down"
-
-[sub_resource type="AnimationNodeAnimation" id=10]
-animation = "Up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=11]
-blend_point_0/node = SubResource( 7 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 8 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 9 )
-blend_point_2/pos = Vector2( 0, 0.9 )
-blend_point_3/node = SubResource( 10 )
-blend_point_3/pos = Vector2( 0, -0.9 )
-min_space = Vector2( -1, -0.9 )
-max_space = Vector2( 1, 0.9 )
-blend_mode = 1
-
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -149,34 +56,4 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 2, 0, 131076, 0, 0, 196608, 0, 0, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0, 196612, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0 )
 
-[node name="Pawn" type="KinematicBody2D" parent="."]
-position = Vector2( 24, 24 )
-script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pawn"]
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Pawn"]
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 0, 32, 16, 16 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pawn"]
-anims/Down = SubResource( 3 )
-anims/Left = SubResource( 4 )
-anims/Right = SubResource( 5 )
-anims/Up = SubResource( 6 )
-
-[node name="AnimationTree" type="AnimationTree" parent="Pawn"]
-tree_root = SubResource( 11 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/blend_position = Vector2( 0.00154555, -0.62069 )
-
-[node name="Arrows" parent="Pawn" instance=ExtResource( 3 )]
+[node name="Pawn" parent="." instance=ExtResource( 2 )]

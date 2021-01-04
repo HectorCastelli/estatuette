@@ -68,6 +68,7 @@ tracks/0/keys = {
 }
 
 [node name="Arrow_Up" type="Sprite"]
+pause_mode = 1
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 16, 0, 16, 16 )

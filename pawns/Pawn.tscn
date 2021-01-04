@@ -97,7 +97,6 @@ max_space = Vector2( 1, 0.9 )
 blend_mode = 1
 
 [node name="Pawn" type="KinematicBody2D"]
-position = Vector2( 24, 24 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
