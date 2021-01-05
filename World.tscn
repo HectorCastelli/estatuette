@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://artwork/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://pawns/Pawn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://pawns/Grave.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenario/BreakableWall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenario/Treasure.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node2D"]
 
@@ -14,3 +17,12 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 3, 196609, 4, 3, 65538, 
 
 [node name="Pawn" parent="." instance=ExtResource( 2 )]
 position = Vector2( 32, 32 )
+
+[node name="Treasure" parent="." instance=ExtResource( 5 )]
+
+[node name="BreakableWall" parent="." instance=ExtResource( 4 )]
+position = Vector2( 32, 64 )
+
+[node name="Grave" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 48 )
+graveType = 1
