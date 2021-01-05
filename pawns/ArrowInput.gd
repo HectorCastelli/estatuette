@@ -1,3 +1,4 @@
+tool # Add this line to run the code on the editor as well, allowing the arrow to be positioned onthe right place based on the Ready function, making editing more pleasant.
 extends Sprite
 
 onready var animPlayer = $AnimationPlayer
