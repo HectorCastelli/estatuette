@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
+const cellSize = 16
+
 const direction = preload("../Globals/Direction.gd").direction
 onready var Arrows = $Arrows
 
-export var movementPatternRules := [
+export(Array, Array, direction) var movementPatternRules := [
 	[direction.UP,direction.UP],
 	[direction.DOWN,direction.DOWN],
 	[direction.LEFT,direction.LEFT],
@@ -16,17 +18,32 @@ func _ready():
 	updatePossibleMovement()
 	pass # Replace with function body.
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		position = originalPosition
+		moveInputs.clear()
+		updatePossibleMovement()
+	if event.is_action_pressed("ui_accept"):
+		if checkNextMove().empty():
+			print("end turn")
+		else:
+			print("Cannot end turn! There are still moves to be done!")
+		
+
+var originalPosition
 func tryMove(dir):
+	if moveInputs.empty(): #Only for the first movement for the turn.
+		originalPosition = position
 	moveInputs.append(dir)
 	match dir:
 		direction.UP:
-			position.y -= 16
+			position.y -= cellSize
 		direction.DOWN:
-			position.y += 16
+			position.y += cellSize
 		direction.LEFT:
-			position.x -= 16
+			position.x -= cellSize
 		direction.RIGHT:
-			position.x += 16
+			position.x += cellSize
 			
 	updatePossibleMovement()
 	pass
@@ -42,6 +59,7 @@ func updatePossibleMovement():
 
 # Movement Rule detection
 var moveInputs := []
+
 func checkNextMove():
 	var allowedMoves := []
 	for movementPattern in movementPatternRules:
@@ -49,6 +67,7 @@ func checkNextMove():
 		if allowedMove != null:
 			allowedMoves.append(allowedMove)
 	return allowedMoves
+	
 func checkPattern(movementRule, movementInput):
 	if (movementInput.empty()):
 		return movementRule[0]

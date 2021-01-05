@@ -2,6 +2,7 @@ tool # Add this line to run the code on the editor as well, allowing the arrow t
 extends Sprite
 
 onready var animPlayer = $AnimationPlayer
+onready var collisionChecker = $RayCast2D
 
 const direction = preload("../Globals/Direction.gd").direction
 
@@ -13,18 +14,22 @@ func _ready():
 	if dir == direction.UP:
 		offset = Vector2(0,-16)
 		animPlayer.play("UP")
+		collisionChecker.rotation_degrees = 180 
 	elif dir == direction.DOWN:
 		offset = Vector2(0,16)
 		animPlayer.play("DOWN")
+		collisionChecker.rotation_degrees = 0
 	elif dir == direction.LEFT:
 		offset = Vector2(-16,0)
 		animPlayer.play("LEFT")
+		collisionChecker.rotation_degrees = 90 
 	elif dir == direction.RIGHT:
 		offset = Vector2(16,0)
 		animPlayer.play("RIGHT")
+		collisionChecker.rotation_degrees = 270 
 
 func _input(event):
-	if visible \
+	if visible and not collisionChecker.is_colliding() \
 		and ((dir == direction.UP and event.is_action_pressed("ui_up")) \
 		or (dir == direction.DOWN and event.is_action_pressed("ui_down")) \
 		or (dir == direction.LEFT and event.is_action_pressed("ui_left")) \
