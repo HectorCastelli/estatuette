@@ -10,18 +10,12 @@ __meta__ = {
 }
 
 [node name="Arrow_Up" parent="." instance=ExtResource( 4 )]
-offset = Vector2( 0, -16 )
-region_rect = Rect2( 0, 0, 16, 16 )
-dir = 0
 
 [node name="Arrow_Down" parent="." instance=ExtResource( 4 )]
+pointsTo = 1
 
 [node name="Arrow_Left" parent="." instance=ExtResource( 4 )]
-offset = Vector2( -16, 0 )
-region_rect = Rect2( 48, 0, 16, 16 )
-dir = 2
+pointsTo = 2
 
 [node name="Arrow_Right" parent="." instance=ExtResource( 4 )]
-offset = Vector2( 16, 0 )
-region_rect = Rect2( 16, 0, 16, 16 )
-dir = 3
+pointsTo = 3

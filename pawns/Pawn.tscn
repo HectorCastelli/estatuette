@@ -129,3 +129,17 @@ parameters/blend_position = Vector2( 0.00154555, -0.62069 )
 
 [node name="Arrows" parent="." instance=ExtResource( 4 )]
 position = Vector2( 8, 8 )
+
+[node name="Arrow_Down" parent="Arrows" index="1"]
+offset = Vector2( 0, 16 )
+region_rect = Rect2( 32, 0, 16, 16 )
+
+[node name="Arrow_Left" parent="Arrows" index="2"]
+offset = Vector2( -16, 0 )
+region_rect = Rect2( 48, 0, 16, 16 )
+
+[node name="Arrow_Right" parent="Arrows" index="3"]
+offset = Vector2( 16, 0 )
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[editable path="Arrows"]

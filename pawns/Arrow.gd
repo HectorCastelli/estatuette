@@ -37,12 +37,12 @@ func hideAll():
 # Signal up
 
 func _ready():
-	ArrowUP.connect("inputDetected", self, "tryToMove")
-	ArrowDOWN.connect("inputDetected", self, "tryToMove")
-	ArrowLEFT.connect("inputDetected", self, "tryToMove")
-	ArrowRIGHT.connect("inputDetected", self, "tryToMove")
+	ArrowUP.connect("arrow_input_detected", self, "tryToMove")
+	ArrowDOWN.connect("arrow_input_detected", self, "tryToMove")
+	ArrowLEFT.connect("arrow_input_detected", self, "tryToMove")
+	ArrowRIGHT.connect("arrow_input_detected", self, "tryToMove")
 	
-signal tryToMovePawn(direction)
+signal attempt_pawn_movement(direction)
 
 func tryToMove(direction):
-	emit_signal("tryToMovePawn",direction)
+	emit_signal("attempt_pawn_movement",direction)

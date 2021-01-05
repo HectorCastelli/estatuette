@@ -6,37 +6,37 @@ onready var collisionChecker = $RayCast2D
 
 const direction = preload("../Globals/Direction.gd").direction
 
-export(direction) var dir := direction.UP
-
-signal inputDetected(direction)
+export(direction) var pointsTo := direction.UP
 
 func _ready():
-	if dir == direction.UP:
+	if pointsTo == direction.UP:
 		offset = Vector2(0,-16)
 		animPlayer.play("UP")
 		collisionChecker.rotation_degrees = 180 
-	elif dir == direction.DOWN:
+	elif pointsTo == direction.DOWN:
 		offset = Vector2(0,16)
 		animPlayer.play("DOWN")
 		collisionChecker.rotation_degrees = 0
-	elif dir == direction.LEFT:
+	elif pointsTo == direction.LEFT:
 		offset = Vector2(-16,0)
 		animPlayer.play("LEFT")
 		collisionChecker.rotation_degrees = 90 
-	elif dir == direction.RIGHT:
+	elif pointsTo == direction.RIGHT:
 		offset = Vector2(16,0)
 		animPlayer.play("RIGHT")
 		collisionChecker.rotation_degrees = 270 
 
 func _input(event):
 	if visible and not collisionChecker.is_colliding() \
-		and ((dir == direction.UP and event.is_action_pressed("ui_up")) \
-		or (dir == direction.DOWN and event.is_action_pressed("ui_down")) \
-		or (dir == direction.LEFT and event.is_action_pressed("ui_left")) \
-		or (dir == direction.RIGHT and event.is_action_pressed("ui_right"))) :
-			sendInput(dir)
+		and ((pointsTo == direction.UP and event.is_action_pressed("ui_up")) \
+		or (pointsTo == direction.DOWN and event.is_action_pressed("ui_down")) \
+		or (pointsTo == direction.LEFT and event.is_action_pressed("ui_left")) \
+		or (pointsTo == direction.RIGHT and event.is_action_pressed("ui_right"))) :
+			sendInput(pointsTo)
 
 
-func sendInput(dir):
-	print_debug("Input detected for: " + direction.keys()[dir])
-	emit_signal("inputDetected",dir)
+signal arrow_input_detected(direction)
+
+func sendInput(inputDirection):
+	print_debug("Input detected for: " + direction.keys()[inputDirection])
+	emit_signal("arrow_input_detected",inputDirection)
