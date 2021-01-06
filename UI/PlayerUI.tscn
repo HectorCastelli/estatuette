@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/UIManager.gd" type="Script" id=1]
+[ext_resource path="res://UI/TurnIndicator.gd" type="Script" id=2]
+[ext_resource path="res://UI/PawnIndicator.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "EndTurn"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.45, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0.670588, 1, 1 ), Color( 0.921569, 1, 0, 1 ), Color( 0, 0.670588, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.05, 0, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.45, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0.670588, 1, 1 ), Color( 0.921569, 1, 0, 1 ), Color( 0, 0.670588, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TurnIndicator" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.3
+margin_bottom = -9.53674e-07
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TurnIndicator"]
+margin_left = 8.0
+margin_top = 5.0
+margin_right = 72.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Your Turn!"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TurnIndicator"]
+anims/EndTurn = SubResource( 1 )
+anims/StartTurn = SubResource( 2 )
+
+[node name="GeneralNotifier" type="CenterContainer" parent="."]
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.7
+
+[node name="Label" type="Label" parent="GeneralNotifier"]
+margin_left = 39.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 23.0
+align = 1
+valign = 1
+autowrap = true
+
+[node name="PawnIndicators" type="GridContainer" parent="."]
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+size_flags_horizontal = 5
+size_flags_vertical = 9
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PawnIndicator" parent="PawnIndicators" instance=ExtResource( 3 )]
+indicatorType = 4
+
+[node name="PawnIndicator2" parent="PawnIndicators" instance=ExtResource( 3 )]
+margin_left = 16.0
+margin_right = 32.0
+
+[node name="PawnIndicator3" parent="PawnIndicators" instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_right = 48.0
+indicatorType = 1
+
+[node name="PawnIndicator4" parent="PawnIndicators" instance=ExtResource( 3 )]
+margin_left = 48.0
+margin_right = 64.0
+indicatorType = 2
+
+[node name="PawnIndicator5" parent="PawnIndicators" instance=ExtResource( 3 )]
+margin_left = 64.0
+margin_right = 80.0
+indicatorType = 3

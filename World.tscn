@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://artwork/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://pawns/Pawn.tscn" type="PackedScene" id=2]
 [ext_resource path="res://pawns/Grave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenario/BreakableWall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenario/Treasure.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/PlayerUI.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node2D"]
 
@@ -26,3 +27,11 @@ position = Vector2( 32, 64 )
 [node name="Grave" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 48 )
 graveType = 1
+
+[node name="Player UI" parent="." instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_top = 1.0
+margin_right = 80.0
+margin_bottom = 80.0
+
+[editable path="Player UI"]

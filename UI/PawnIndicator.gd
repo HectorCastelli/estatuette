@@ -1,13 +1,20 @@
-extends StaticBody2D
+extends Control
 
 const pawnTypes = preload("../Globals/PawnTypes.gd").pawnTypes
 
-export(pawnTypes) var graveType
+export(pawnTypes) var indicatorType
+export(int) var unitCount = 1 setget setUnitCount
 
 onready var animationPlayer = $AnimationPlayer
+onready var labelCount = $Label
+
+func setUnitCount(value):
+	unitCount = value
+	labelCount.text = str(unitCount)
 
 func _ready():
-	match graveType:
+	labelCount.text = str(unitCount)
+	match indicatorType:
 		pawnTypes.Archeologist:
 			animationPlayer.play("Archeologist")
 		pawnTypes.Carrier:
@@ -18,3 +25,4 @@ func _ready():
 			animationPlayer.play("MachineExpert")
 		pawnTypes.Scout:
 			animationPlayer.play("Scout")
+
