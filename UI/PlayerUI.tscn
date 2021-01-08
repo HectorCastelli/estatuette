@@ -79,9 +79,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="TurnIndicator"]
-margin_left = 8.0
-margin_top = 5.0
-margin_right = 72.0
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 74.0
 margin_bottom = 19.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Your Turn!"
@@ -98,7 +98,7 @@ anchor_bottom = 0.7
 
 [node name="Label" type="Label" parent="GeneralNotifier"]
 margin_left = 39.0
-margin_top = 9.0
+margin_top = 8.0
 margin_right = 40.0
 margin_bottom = 23.0
 align = 1

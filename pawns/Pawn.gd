@@ -2,22 +2,17 @@ extends KinematicBody2D
 
 const cellSize = 16
 
-signal turnEnd
+signal turn_end
 
 const direction = preload("../Globals/Direction.gd").direction
 onready var Arrows = $Arrows
 
-export(Array, Array, direction) var movementPatternRules := [
-	[direction.UP,direction.UP],
-	[direction.DOWN,direction.DOWN],
-	[direction.LEFT,direction.LEFT],
-	[direction.RIGHT,direction.RIGHT],
-]
+export(Resource) var movementRules
 
 func _ready():
-	Arrows.hideAll()
 	Arrows.connect("attempt_pawn_movement", self, "tryMove")
-	updatePossibleMovement()
+	# if (movementRules):
+		# updatePossibleMovement()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -26,10 +21,11 @@ func _input(event):
 		updatePossibleMovement()
 	if event.is_action_pressed("ui_accept"):
 		if checkNextMove().empty():
+			moveInputs.clear()
+			emit_signal("turn_end")
 			print("end turn")
 		else:
 			print("Cannot end turn! There are still moves to be done!")
-			emit_signal("turnEnd")
 		
 
 # Movement logic
@@ -60,7 +56,7 @@ var moveInputs := []
 
 func checkNextMove():
 	var allowedMoves := []
-	for movementPattern in movementPatternRules:
+	for movementPattern in movementRules.patterns:
 		var allowedMove = checkPattern(movementPattern, moveInputs)
 		if allowedMove != null:
 			allowedMoves.append(allowedMove)

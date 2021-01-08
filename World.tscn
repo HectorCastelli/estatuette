@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://artwork/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://pawns/Pawn.tscn" type="PackedScene" id=2]
@@ -6,8 +6,11 @@
 [ext_resource path="res://Scenario/BreakableWall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenario/Treasure.tscn" type="PackedScene" id=5]
 [ext_resource path="res://UI/PlayerUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://pawns/PawnRules/MachineExpert.tres" type="Resource" id=7]
+[ext_resource path="res://Globals/GameManager.gd" type="Script" id=8]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -18,6 +21,7 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 3, 196609, 4, 3, 65538, 
 
 [node name="Pawn" parent="." instance=ExtResource( 2 )]
 position = Vector2( 32, 32 )
+movementRules = ExtResource( 7 )
 
 [node name="Treasure" parent="." instance=ExtResource( 5 )]
 
