@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var pawn = $Pawn
-onready var playerUI = $"Player UI"
+onready var playerUI = $CanvasLayer/"Player UI"
 
 func _ready():
 	pawn.connect("turn_end", self, "pawn_turn_end")
