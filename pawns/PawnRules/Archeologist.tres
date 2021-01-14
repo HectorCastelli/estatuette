@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource( 1 )
 patterns = [ [ 0, 0 ], [ 1, 1 ], [ 2, 2 ], [ 3, 3 ] ]
-deathMovments = [ 0, 1, 2, 3 ]
+deathMovements = [ 0, 1, 2, 3 ]

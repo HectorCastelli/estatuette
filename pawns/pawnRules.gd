@@ -9,6 +9,6 @@ export(Array, Array, direction) var patterns := [
 	[direction.RIGHT,direction.RIGHT],
 ]
 
-export (Array, direction) var deathMovments := [
+export (Array, direction) var deathMovements := [
 	direction.UP, direction.DOWN, direction.LEFT, direction.RIGHT
 ]

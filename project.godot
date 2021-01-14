@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Estatuette"
+run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -54,6 +55,15 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[layer_names]
+
+2d_physics/layer_1="base"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemies"
+2d_physics/layer_4="traps"
+2d_physics/layer_5="treasure"
+2d_physics/layer_6="grave"
 
 [rendering]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://artwork/spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://pawns/Grave.gd" type="Script" id=2]
@@ -150,7 +150,11 @@ tracks/1/keys = {
 "values": [ Rect2( 32, 256, 16, 16 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=7]
+
 [node name="Grave" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -167,9 +171,8 @@ shape = SubResource( 1 )
 [node name="PawnIndicator" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
-offset = Vector2( 0, -1 )
 region_enabled = true
-region_rect = Rect2( 48, 256, 16, 16 )
+region_rect = Rect2( 0, 272, 16, 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Archeologist = SubResource( 2 )
@@ -177,3 +180,13 @@ anims/Carrier = SubResource( 3 )
 anims/Digger = SubResource( 4 )
 anims/MachineExpert = SubResource( 5 )
 anims/Scout = SubResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 8, 8 )
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 7 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
