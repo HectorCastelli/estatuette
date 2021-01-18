@@ -7,11 +7,13 @@ signal turn_end
 const direction = preload("../Globals/Direction.gd").direction
 onready var Arrows = $Arrows
 
-export(Resource) var movementRules
+export(Resource) var pawnRules
 
 func _ready():
 	Arrows.connect("attempt_pawn_movement", self, "tryMove")
-	# if (movementRules):
+	Arrows.setHoleDetection(pawnRules.canVaultOverHoles)
+	Arrows.setBreakableWallDetection(pawnRules.canBreakWalls)
+	# if (pawnRules):
 		# updatePossibleMovement()
 
 func _input(event):
@@ -116,7 +118,7 @@ func patchMovementRules_SingleModifier(basePattern, modifierIndex, modifierValue
 
 func checkNextMove():
 	var allowedMoves := []
-	var patchedRules = patchMovementRules(movementRules.patterns, movementModifiers)
+	var patchedRules = patchMovementRules(pawnRules.patterns, movementModifiers)
 	for movementPattern in patchedRules:
 		var allowedMove = checkPattern(movementPattern, moveInputs)
 		if allowedMove != null:

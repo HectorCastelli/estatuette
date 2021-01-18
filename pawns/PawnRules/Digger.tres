@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
+canBreakWalls = true
+canVaultOverHoles = false
 patterns = [ [ 0, 0 ], [ 1, 1 ], [ 2, 2 ], [ 3, 3 ] ]
 deathMovements = [ 0, 1, 2, 3 ]

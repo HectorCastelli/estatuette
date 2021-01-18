@@ -4,15 +4,16 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="Treasure" type="StaticBody2D"]
-collision_layer = 16
-collision_mask = 2
+[node name="Hole" type="StaticBody2D"]
+position = Vector2( 80, 96.5 )
+collision_layer = 4
+collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 16, 240, 16, 16 )
+region_rect = Rect2( 16, 32, 16, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 8, 8 )

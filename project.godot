@@ -60,8 +60,8 @@ texture={
 
 2d_physics/layer_1="base"
 2d_physics/layer_2="player"
-2d_physics/layer_3="enemies"
-2d_physics/layer_4="traps"
+2d_physics/layer_3="hole"
+2d_physics/layer_4="breakableWall"
 2d_physics/layer_5="treasure"
 2d_physics/layer_6="grave"
 

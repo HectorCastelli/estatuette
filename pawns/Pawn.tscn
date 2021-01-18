@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://pawns/Pawn.gd" type="Script" id=1]
-[ext_resource path="res://pawns/PawnRules/Archeologist.tres" type="Resource" id=2]
 [ext_resource path="res://artwork/spritesheet.png" type="Texture" id=3]
 [ext_resource path="res://pawns/Arrows.tscn" type="PackedScene" id=4]
 
@@ -101,7 +100,6 @@ blend_mode = 1
 collision_layer = 2
 collision_mask = 49
 script = ExtResource( 1 )
-movementRules = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -135,9 +133,6 @@ parameters/blend_position = Vector2( 0.00154555, -0.62069 )
 
 [node name="Arrows" parent="." instance=ExtResource( 4 )]
 position = Vector2( 8, 8 )
-
-[node name="Arrow_Up" parent="Arrows" index="0"]
-pointsTo = 0
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 
 [editable path="Arrows"]

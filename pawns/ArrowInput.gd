@@ -40,3 +40,6 @@ signal arrow_input_detected(direction)
 func sendInput(inputDirection):
 	print_debug("Input detected for: " + direction.keys()[inputDirection])
 	emit_signal("arrow_input_detected",inputDirection)
+	
+	
+onready var raycast = $RayCast2D

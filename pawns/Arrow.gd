@@ -46,3 +46,17 @@ signal attempt_pawn_movement(direction)
 
 func tryToMove(direction):
 	emit_signal("attempt_pawn_movement",direction)
+	
+	
+# Set Special Detections
+func setHoleDetection(status:bool):
+	ArrowUP.raycast.set_collision_mask_bit(2, !status)
+	ArrowDOWN.raycast.set_collision_mask_bit(2, !status)
+	ArrowLEFT.raycast.set_collision_mask_bit(2, !status)
+	ArrowRIGHT.raycast.set_collision_mask_bit(2, !status)
+	
+func setBreakableWallDetection(status:bool):
+	ArrowUP.raycast.set_collision_mask_bit(3, !status)
+	ArrowDOWN.raycast.set_collision_mask_bit(3, !status)
+	ArrowLEFT.raycast.set_collision_mask_bit(3, !status)
+	ArrowRIGHT.raycast.set_collision_mask_bit(3, !status)

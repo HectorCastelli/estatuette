@@ -86,4 +86,4 @@ anims/UP = SubResource( 4 )
 rotation = 3.14159
 enabled = true
 cast_to = Vector2( 0, 8 )
-collision_mask = 29
+collision_mask = 13
