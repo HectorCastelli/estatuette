@@ -38,7 +38,7 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="BreakableWall" parent="." instance=ExtResource( 4 )]
-position = Vector2( 16, 80 )
+position = Vector2( 32, 64 )
 collision_mask = 0
 
 [node name="Grave" parent="." instance=ExtResource( 3 )]
