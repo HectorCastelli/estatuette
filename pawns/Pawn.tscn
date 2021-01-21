@@ -5,7 +5,7 @@
 [ext_resource path="res://pawns/Arrows.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 9.0
+radius = 6.0
 
 [sub_resource type="Animation" id=2]
 length = 0.1
